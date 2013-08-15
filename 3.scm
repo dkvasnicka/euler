@@ -8,7 +8,7 @@
    (if (= rem 0)
      (find-largest-prime-factor (/ n first-prime) prime-numbers-stream)
      (let ((next-prime-stream (stream-cdr stream)))
-        (if (> (stream-car next-prime-stream) (/ n 2))
+        (if (> (stream-car next-prime-stream) (sqrt n))
             n
             (find-largest-prime-factor n next-prime-stream))))))
 
