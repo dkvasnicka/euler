@@ -1,6 +1,8 @@
 (require-extension streams-math)
 (require-extension streams-primitive)
 
+; Having prime numbers as a stream is a very cool 
+; feature in the Chicken Scheme impl. of SRFI-41!
 (define (find-largest-prime-factor n stream)  
   (let* ((first-prime (stream-car stream)) 
          (rem (modulo n first-prime)))

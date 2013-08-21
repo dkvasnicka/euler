@@ -1,5 +1,6 @@
 (require '[clojure.core.reducers :as r])
 
+; Attempt at a 100 % lazy solution
 (defn fibos [limit]
     (take-while 
       #(< (last %) limit) 
