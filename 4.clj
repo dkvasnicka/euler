@@ -1,6 +1,6 @@
 (defn check-factors [x]
    (not (empty? (filter 
-                  #(= 3 (count (str %))) 
+                  #(and (>= % 100) (<= % 999)) 
                   (map #(/ x %) 
                        (filter #(= 0 (mod x %)) (range 999 99 -1)))))))
 
