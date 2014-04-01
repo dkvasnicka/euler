@@ -2,7 +2,7 @@
 
 (def input 
    (mapv #(mapv (fn [n] (Integer/parseInt n)) (s/split % #" ")) 
-          (vec (s/split-lines (slurp "11.txt")))))
+          (vec (s/split-lines (slurp "011.txt")))))
 
 (defn diagonals [mx]
   (let [size (count (first mx))]
