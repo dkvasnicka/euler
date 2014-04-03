@@ -1,5 +1,12 @@
 #lang racket
 
+(require racket/unsafe/ops)
+
+(define + unsafe-fx+)
+(define - unsafe-fx-)
+(define * unsafe-fx*)
+(define / unsafe-fxquotient)
+
 (define/match [populate n]
   [[(? odd?)]  (+ 1 (* 3 n))]
   [[(? even?)] (/ n 2)])
