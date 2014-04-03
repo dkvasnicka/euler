@@ -6,6 +6,8 @@
 (define - unsafe-fx-)
 (define * unsafe-fx*)
 (define / unsafe-fxquotient)
+(define = unsafe-fx=)
+(define > unsafe-fx>)
 
 (define/match [populate n]
   [[(? odd?)]  (+ 1 (* 3 n))]
@@ -14,13 +16,13 @@
 (define [collatz-length n]
   (letrec [[inner 
             (λ [n cnt]
-               (if (eq? 1 n)
+               (if (= 1 n)
                    cnt
                    (inner (populate n) (+ 1 cnt))))]]
     (inner n 1)))
 
 (define [p14 n maxlen result]
-  (if (eq? 1 n)
+  (if (= 1 n)
       result
       (let* [[curlen (collatz-length n)]
              [better? (> curlen maxlen)]]
