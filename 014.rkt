@@ -14,12 +14,11 @@
   [[(? even?)] (/ n 2)])
 
 (define [collatz-length n]
-  (letrec [[inner 
-            (λ [n cnt]
-               (if (= 1 n)
-                   cnt
-                   (inner (populate n) (+ 1 cnt))))]]
-    (inner n 1)))
+  (let loop [[x   n]
+             [cnt 1]]
+    (if (= 1 x)
+        cnt
+        (loop (populate x) (+ 1 cnt)))))
 
 (define [p14 n maxlen result]
   (if (= 1 n)

@@ -1,6 +1,7 @@
 target
 .DS_Store
 *.swp
+*.swo
 .ropeproject
 *.iml
 .idea
