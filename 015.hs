@@ -1,18 +1,8 @@
-import Math.Combinat.Partitions
-import Data.List
+choose :: Int -> Int -> Int
 
-data Segments = Segments { intermediateSum :: Int, segs :: [[Int]] } deriving Show
-
-reduce :: Segments -> Segments -> Segments
-reduce x y = Segments ((intermediateSum x) + ((llength ^ 2) + (llength * length rsegs))) rsegs
-                where
-                    llength = length (segs x)
-                    rsegs = segs y
+choose n 0 = 1
+choose 0 k = 0
+choose n k = choose (n - 1) (k - 1) * n `div` k
 
 main :: IO ()
-main = print $ 
-          (intermediateSum folded + 1) * 2
-              where 
-                comps = map (nub . permutations . fromPartition) (partitions 20)
-                groupedComps = groupBy (\x y -> length (head x) == length (head y)) comps
-                folded = foldl1 reduce (map ((Segments 0) . concat) groupedComps)
+main = print $ choose 40 20 
