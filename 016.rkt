@@ -1,5 +1,7 @@
 #lang typed/racket/base
 
+(require math/base)
+
 [: number->digits (Integer -> (Listof Integer))]
 
 (define [number->digits n] 
@@ -11,6 +13,7 @@
 
 (define [sum-doubled-digits n]
   (foldl (lambda: [(d : Integer) (accum : Integer)]
+                  (displayln d)
                   (+ accum 
                      (let-values [[[l r] (quotient/remainder (* 2 d) 10)]]
                                  (+ l r)))) 
@@ -23,4 +26,6 @@
       2
       (sum-doubled-digits (power-of-two-digit-sum (sub1 e)))))
 
-(power-of-two-digit-sum 11)
+(time (power-of-two-digit-sum 6))
+
+; double just the number; sum in the end
