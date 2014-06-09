@@ -32,7 +32,7 @@
 (time (sum (two-to-the-power-of 1000)))
 
 ; Freaking fast version using built-in expt function. Can go in less than 1 ms on a 3 yrs old MBP
-[: number->digits (Integer -> (Listof Integer))]
+(: number->digits (Integer -> (Listof Integer)))
 
 (define [number->digits n] 
   (if (< n 10)
