@@ -11,6 +11,5 @@
 
 (stream-car 
   (stream-drop-while 
-    (λ [n] (<= (foldl * 1 (map (compose1 (curry + 1) cadr) 
-                               (factorize n))) 500))
+    (λ [n] (<= (for/product [[i (factorize n)]] (add1 (cadr i))) 500))
     (triangle-nums 50000)))
