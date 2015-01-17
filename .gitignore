@@ -4,4 +4,5 @@ target
 *.swo
 .ropeproject
 *.iml
+.lein-repl-history
 .idea
