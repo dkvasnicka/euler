@@ -2,7 +2,7 @@
 
 input = Map[ToExpression, 
 	StringSplit[StringReplace[
-		Import["/Users/daniel/Projects/euler/008.txt"], {WhitespaceCharacter -> ""}], ""]];
+		Import["008.txt"], {WhitespaceCharacter -> ""}], ""]];
 
-fives = Map[Take[input, {#, # + 4}] &, Range[996]];
-Max[Map[Product[i, {i, #}] &, fives]]
+fives = Map[Take[input, {#, # + 12}] &, Range[987]];
+Print[Max[Map[Product[i, {i, #}] &, fives]]]

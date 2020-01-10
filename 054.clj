@@ -6,9 +6,9 @@
 (def card-values [\2 \3 \4 \5 \6 \7 \8 \9 \T \J \Q \K \A])
 
 (defn parse-line [l]
-  (split-at 5 
+  (split-at 5
             (map #(Card. (.indexOf card-values (first %))
-                         (second %)) 
+                         (second %))
                  (split l #" "))))
 
 ; helpers
@@ -17,16 +17,16 @@
 
 (defn consecutive-values? [hand]
   (let [values (sort (map :value hand))]
-    (and (apply < values) 
+    (and (apply < values)
          (= 4 (- (last values) (first values))))))
 
 (defn values-histogram [hand]
   (frequencies (map :value hand)))
 
-(def high-card 
-  (memoize 
+(def high-card
+  (memoize
     (fn [hand]
-        (sort-by - (map :value hand)))))
+      (sort-by - (map :value hand)))))
 
 (defn n-of-a-kind [n hand]
   (let [hist (values-histogram hand)
@@ -77,22 +77,23 @@
 
 ; game
 (defn vec>? [v1 v2]
-  (when-let 
+  (when-let
     [scores (first
-              (drop-while (partial apply =) 
+              (drop-while (partial apply =)
                           (map vector v1 v2)))]
     (v (apply > scores))))
 
 (defn play [[hand1 hand2]]
   (loop [rulz rules]
-        (let [r (comp flatten vector (first rulz))
-              h1 (r hand1)
-              h2 (r hand2)]
-          (if-some [result (vec>? h1 h2)]
-            result
-            (recur (rest rulz))))))
+    (let [r (comp flatten vector (first rulz))
+          h1 (r hand1)
+          h2 (r hand2)]
+      (if-some [result (vec>? h1 h2)]
+        result
+        (recur (rest rulz))))))
 
 (let [lines (line-seq (io/reader "054.txt"))
       get-hands (map parse-line)
       determine-winner (map play)]
-  (transduce (comp get-hands determine-winner) + 0 lines))
+  (println
+    (transduce (comp get-hands determine-winner) + 0 lines)))

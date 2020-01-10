@@ -8,4 +8,4 @@ Two reasons I'm (occasionally) spending time with Euler:
 
 If you're missing a program for some particular problem it means I either solved it without writing one or I simply decided not to solve that problem :)
 
-[![My Euler badge](https://projecteuler.net/profile/dkvasnicka.png)](https://projecteuler.net/progress=dkvasnicka)
+[![My Euler badge](https://projecteuler.net/profile/danielkvasnicka.png)](https://projecteuler.net/progress=danielkvasnicka)
